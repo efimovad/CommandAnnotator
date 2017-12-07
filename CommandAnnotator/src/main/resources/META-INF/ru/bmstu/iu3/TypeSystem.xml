@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>TypeSystem</name>
+    <description/>
+    <version>1.0</version>
+    <vendor/>
+  <imports>
+    <import name="META-INF.ru.bmstu.iu3.type.CommandAnnotation"/>
+    <import name="META-INF.ru.bmstu.iu3.type.Sentence"/>
+    <import name="META-INF.ru.bmstu.iu3.type.Token"/>
+  </imports>
+</typeSystemDescription>

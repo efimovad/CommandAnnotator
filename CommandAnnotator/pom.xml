@@ -4,17 +4,77 @@
   <artifactId>CommandAnnotator</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <build>
-    <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.7.0</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
-      
+      <plugin>
+                <groupId>org.apache.uima</groupId>
+                <artifactId>jcasgen-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <typeSystemIncludes>
+                                <typeSystemInclude>src/main/resources/ru/bmstu/iu3/TypeSystem.xml</typeSystemInclude>
+                            </typeSystemIncludes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+    		<plugin>
+                <!--
+                    This plug-in adds the jcasgen generated source code folder as a project
+                    source folder
+                -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-test-source</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/jcasgen</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
     </plugins>
   </build>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.apache.uima</groupId>
+  		<artifactId>uimaj-core</artifactId>
+  		<version>3.0.0-beta</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.apache.uima</groupId>
+  		<artifactId>uimafit-core</artifactId>
+  		<version>3.0.0-beta</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.uimafit</groupId>
+  		<artifactId>uimafit</artifactId>
+  		<version>3.0.0-beta</version>
+  	</dependency>
+  </dependencies>
+  <parent>
+  	<groupId>org.apache.uima</groupId>
+  	<artifactId>uimafit-parent</artifactId>
+  	<version>3.0.0-beta</version>
+  	<relativePath>../uimafit-parent</relativePath>
+  </parent>
 </project>
