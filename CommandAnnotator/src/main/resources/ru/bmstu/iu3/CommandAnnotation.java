@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Thu Nov 30 12:13:03 MSK 2017 */
+/* First created by JCasGen Wed Dec 06 20:14:10 MSK 2017 */
 package ru.bmstu.iu3;
 
 import org.apache.uima.jcas.JCas; 
@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Thu Nov 30 12:13:03 MSK 2017
- * XML source: D:/ws2/CommandAnnotator/desc/CommandAnnotatorDescriptor.xml
+ * Updated by JCasGen Wed Dec 06 20:14:10 MSK 2017
+ * XML source: D:/SPB_Data/git/CommandAnnotator/CommandAnnotator/typesystem/typeSystemDescriptor.xml
  * @generated */
 public class CommandAnnotation extends Annotation {
   /** @generated
@@ -77,25 +77,25 @@ public class CommandAnnotation extends Annotation {
  
     
   //*--------------*
-  //* Feature: otherAnnotation
+  //* Feature: building
 
-  /** getter for otherAnnotation - gets 
+  /** getter for building - gets 
    * @generated
    * @return value of the feature 
    */
-  public Annotation getOtherAnnotation() {
-    if (CommandAnnotation_Type.featOkTst && ((CommandAnnotation_Type)jcasType).casFeat_otherAnnotation == null)
-      jcasType.jcas.throwFeatMissing("otherAnnotation", "ru.bmstu.iu3.CommandAnnotation");
-    return (Annotation)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((CommandAnnotation_Type)jcasType).casFeatCode_otherAnnotation)));}
+  public String getBuilding() {
+    if (CommandAnnotation_Type.featOkTst && ((CommandAnnotation_Type)jcasType).casFeat_building == null)
+      jcasType.jcas.throwFeatMissing("building", "ru.bmstu.iu3.CommandAnnotation");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((CommandAnnotation_Type)jcasType).casFeatCode_building);}
     
-  /** setter for otherAnnotation - sets  
+  /** setter for building - sets  
    * @generated
    * @param v value to set into the feature 
    */
-  public void setOtherAnnotation(Annotation v) {
-    if (CommandAnnotation_Type.featOkTst && ((CommandAnnotation_Type)jcasType).casFeat_otherAnnotation == null)
-      jcasType.jcas.throwFeatMissing("otherAnnotation", "ru.bmstu.iu3.CommandAnnotation");
-    jcasType.ll_cas.ll_setRefValue(addr, ((CommandAnnotation_Type)jcasType).casFeatCode_otherAnnotation, jcasType.ll_cas.ll_getFSRef(v));}    
+  public void setBuilding(String v) {
+    if (CommandAnnotation_Type.featOkTst && ((CommandAnnotation_Type)jcasType).casFeat_building == null)
+      jcasType.jcas.throwFeatMissing("building", "ru.bmstu.iu3.CommandAnnotation");
+    jcasType.ll_cas.ll_setStringValue(addr, ((CommandAnnotation_Type)jcasType).casFeatCode_building, v);}    
   }
 
     

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>typeSystemDescriptor</name>
+    <description/>
+    <version>1.0</version>
+    <vendor/>
+  <imports>
+    <import location="file:/D:/SPB_Data/git/CommandAnnotator/CommandAnnotator/typesystem/type/Command.xml"/>
+    <import location="file:/D:/SPB_Data/git/CommandAnnotator/CommandAnnotator/typesystem/type/Token.xml"/>
+    <import location="file:/D:/SPB_Data/git/CommandAnnotator/CommandAnnotator/typesystem/type/Sentence.xml"/>
+  </imports>
+</typeSystemDescription>

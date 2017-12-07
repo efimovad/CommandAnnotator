@@ -18,16 +18,24 @@ import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.Feature;
 import org.apache.uima.cas.Type;
 import org.apache.uima.cas.text.AnnotationFS;
+import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
+import org.apache.uima.fit.descriptor.TypeCapability;
 import org.apache.uima.jcas.JCas;
 //import org.apache.uima.tutorial.RoomNumber;
 
 import ru.bmstu.iu3.CommandAnnotation;
 //import ru.bmstu.iu3.CommandRecognizer;
 
-public class CommandAnnotator extends CasAnnotator_ImplBase {
+@TypeCapability(outputs = { "ru.bmstu.iu3.CommandAnnotation",
+"ru.bmstu.iu3.CommandAnnotation:building" })
+
+public class CommandAnnotator extends JCasAnnotator_ImplBase {
+
+//extends CasAnnotator_ImplBase {
 
 	@Override
-	public void process(CAS aCas) throws AnalysisEngineProcessException {
+	public void process(JCas aJCas) { //throws AnalysisEngineProcessException {
+		
 		
 		try {
 			readCommand();
@@ -37,31 +45,37 @@ public class CommandAnnotator extends CasAnnotator_ImplBase {
 			return;
 		}
 		
-		CAS myView = aCas.getView("OriginalDocument");
-		Type annot = myView.getAnnotationType();
-	    Type cross = myView.getTypeSystem().getType("ru.bmstu.iu3.CommandRecognizer");
-	    Feature other = cross.getFeatureByBaseName("otherAnnotation");
+		//CAS myView = aCas.getView("OriginalDocument");
+		//Type annot = myView.getAnnotationType();
+		//Type cross = myView.getTypeSystem().getType("ru.bmstu.iu3.CommandAnnotation");
+		//Feature other = cross.getFeatureByBaseName("otherAnnotation");
 	    
-	    String orgText = myView.getDocumentText();
+		//String orgText = myView.getDocumentText();
 		
+		String orgText = aJCas.getDocumentText();
 	    int orgEnd = 0;
 	    int commandBegin = 0;
 	    int commandEnd = 0;
 	    
 	    try {
-	    	JCas aJCas = myView.getJCas();
+	    	//JCas aJCas = myView.getJCas();
 	    
 	    	StringTokenizer st = new StringTokenizer(orgText);
+	    	
 	    	while (st.hasMoreTokens()) {
-		      
-	    		CommandAnnotation annotation = new CommandAnnotation(aJCas);
-	    		
+	    	
 	    		String thisTok = st.nextToken();
 	    		
+	    		CommandAnnotation annotation = new CommandAnnotation(aJCas);
+	    		
 	    		if (checker(thisTok)) {
-	  	      		int orgBegin = orgText.indexOf(thisTok, orgEnd);
+	  	      		
+	    			int orgBegin = orgText.indexOf(thisTok, orgEnd);
 	  	      		orgEnd = orgBegin + thisTok.length();
+	  	      		
+	  	      		
 	  	      		System.out.println("original BEGIN:"+orgBegin+" original END:"+orgEnd);
+	  	      		
 	  	      		annotation.setBegin(orgBegin);
 	  	      		annotation.setEnd(orgEnd);
 	  	      		annotation.addToIndexes();
@@ -69,8 +83,8 @@ public class CommandAnnotator extends CasAnnotator_ImplBase {
 	    	}
 	    }
 	
-	    catch (CASException ex) {
-	    	System.out.println("Hello, CASException");
+	    catch (Exception ex) {
+	    	ex.printStackTrace();
 	    }
 	    
 	  }

@@ -3,6 +3,13 @@
   <groupId>CommandAnnotator</groupId>
   <artifactId>CommandAnnotator</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.apache.uima</groupId>
+  		<artifactId>uimafit-core</artifactId>
+  		<version>2.3.0</version>
+	</dependency>
+  </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -14,7 +21,23 @@
           <target>1.6</target>
         </configuration>
       </plugin>
-      
+      <plugin>
+                <groupId>org.apache.uima</groupId>
+                <artifactId>jcasgen-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <typeSystemIncludes>
+                                <typeSystemInclude>typesystem/typeSystemDescritor.xml</typeSystemInclude>
+                            </typeSystemIncludes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
     </plugins>
   </build>
 </project>
