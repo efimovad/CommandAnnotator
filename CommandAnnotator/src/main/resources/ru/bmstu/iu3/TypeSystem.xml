@@ -5,8 +5,6 @@
     <version>1.0</version>
     <vendor/>
   <imports>
-    <import name="META-INF.ru.bmstu.iu3.type.CommandAnnotation"/>
-    <import name="META-INF.ru.bmstu.iu3.type.Sentence"/>
-    <import name="META-INF.ru.bmstu.iu3.type.Token"/>
+    <import name="ru.bmstu.iu3.type.CommandAnnotation"/>
   </imports>
 </typeSystemDescription>
