@@ -5,7 +5,6 @@ import static org.apache.uima.fit.util.JCasUtil.select;
 
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngine;
-import org.apache.uima.cas.text.AnnotationFS;
 import org.apache.uima.jcas.JCas;
 
 import ru.bmstu.iu3.type.CommandAnnotation;
@@ -24,7 +23,8 @@ public class CommandAnnotatorPipeline {
 	    
 	    for (CommandAnnotation annot : select(jCas, CommandAnnotation.class)) {
 	    
-	      System.out.println(" " + annot.getType().getName() + ": " + annot.getCoveredText());
+	      System.out.println(annot.getType().getName() + ": " + annot.getCoveredText());
+	      System.out.println(" BEGIN: "+ annot.getBegin()+" END: "+annot.getEnd());
 	    }
 	    
 	  }
